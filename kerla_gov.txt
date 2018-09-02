@@ -1,0 +1,59 @@
+
+
+function myScript(server, mobileNo){
+	var server = "https://sso.kerala.gov.in/CMDRF/";
+	var mobileNo = "7501798294";
+	getPaymentList(server, mobileNo);
+}
+
+function getPaymentList(server, mobileNo){
+	cmdrfPaymentList = new Array();
+	var baseUrlKerla = server; 
+	var mobileNum = mobileNo;
+
+$.ajax({
+	url : baseUrlKerla+"getPaymentDetails",
+			data : { name: mobileNum},
+			type : 'POST',
+			success : function(data) {
+					data=JSON.parse(data);
+					if(data.length > 0){
+					//RZ
+					//send to mongoDB with rercord					
+					cmdrfPaymentList = data;
+					createPaymentListTable(cmdrfPaymentList);
+					}
+					else{
+						//RZ
+						//send to mongoDB with NO rercord	
+						console.log('No records found for this mobile number' + mobileNum);
+					}				
+			},
+			error : function(e) {
+				console.log("###_________ERROR: ", e);			
+			},
+		});
+}
+
+myScript();
+
+
+
+function randMobilGenrator(){
+	var mob1  = randomIntFromInterval(6,9)+ "" + randomIntFromInterval(000000000, 999999999);
+	var mob1  = grandomIntFromInterval(000000000, 999999999);
+	console.log(mob);
+	
+	
+	function randomIntFromInterval(min,max){
+    return Math.floor(Math.random()*(max-min+1)+min);
+	
+	}
+}
+
+for (var x=0; x<=10000; x++){
+	randMobilGenrator();
+}
+
+
+
