@@ -1,0 +1,15 @@
+
+
+
+for(var x=0; x<100; x++){
+	var mob1  = randomIntFromInterval(6,9)+ "" ;
+	var mob1  = mob1 + randomIntFromInterval(000000000, 999999999);
+	console.log(mob);	
+	function randomIntFromInterval(min,max){
+    return Math.floor(Math.random()*(max-min+1)+min);	
+	}	
+	$("#phone")[0].value ="123456789"
+	getPaymentList()
+}
+
+
